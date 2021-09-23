@@ -17,7 +17,8 @@ module.exports = class Validations {
 				.error(new Error("Email noto'g'ri kiritilgan")),
 			password: Joi.string()
 				.required()
-				.error(new Error("Parol noto'g'ri kiritilgan")),
+                .min(6)
+				.error(new Error("Parol uzunligi minimum 6 ta belgi bo'lishi lozim")),
 		}).validateAsync(data);
 	}
 	static async LoginValidation(data) {
