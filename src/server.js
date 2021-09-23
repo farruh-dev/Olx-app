@@ -4,6 +4,7 @@ const path = require("path")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser");
 const routes = require("./routes/routes");
+const mongo = require("./modules/mongoose")
 
 const PORT = process.env.PORT || 5656;
 
@@ -22,6 +23,7 @@ async function server(mode) {
         }))
         app.use(cookieParser())
 
+        await mongo()
 
         if(mode == "DEV"){
             app.use(morgan("dev"))
