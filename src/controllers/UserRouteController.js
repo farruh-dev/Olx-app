@@ -18,13 +18,13 @@ module.exports = class UserRouteController {
                 name, email, password: await createCrypt(password)
             })
 
-            if(user){
-                res.render('verify', {
-                    message: `${user.name}, sizning ${user.email} pochtangizga emailni tasdiqlash uchun link jo'natildi. Davom etish uchun emailingizni tasdiqlang.`
-                })
-            }
-
+            // if(user){
+            //     res.render('verify', {
+            //         message: `${user.name}, sizning ${user.email} pochtangizga emailni tasdiqlash uchun link jo'natildi. Davom etish uchun emailingizni tasdiqlang.`
+            //     })
+            // }
             await mail(email, "Iltimos emailingizni tasdiqlang", "Tasdiqlash uchun link:", `<a href="http://localhost:7889/users/verify/${user._id}">Tasdiqlash</a>`)
+
             
         } catch (error) {
             res.render('register', {
