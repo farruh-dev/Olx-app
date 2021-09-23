@@ -4,6 +4,7 @@ const path = require("path")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser");
 const databaseMiddleware = require("./middlewares/dbMiddleware");
+const routes = require("./routes/routes");
 
 const PORT = process.env.PORT || 5656;
 
@@ -28,9 +29,10 @@ async function server(mode) {
         }
 
         app.set("view engine", "ejs")
+        app.set("views", path.join(__dirname, "views"))
 
     } finally {
-
+        routes(app)
     }
 
 
