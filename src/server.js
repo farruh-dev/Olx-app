@@ -1,7 +1,10 @@
 const express = require("express")
 
 const path = require("path")
-const cookieParser = require("cookie-parser")
+const morgan = require("morgan")
+const cookieParser = require("cookie-parser");
+const databaseMiddleware = require("./middlewares/dbMiddleware");
+
 const PORT = process.env.PORT || 5656;
 
 async function server(mode) {
@@ -17,6 +20,12 @@ async function server(mode) {
             extended: true
         }))
         app.use(cookieParser())
+        app.use(databaseMiddleware)
+
+        if(mode == "DEV"){
+            app.use(morgan("dev"))
+        }
+
         app.set("view engine", "ejs")
 
     } finally {
@@ -25,3 +34,8 @@ async function server(mode) {
 
 
 }
+
+
+module.exports = server
+
+
