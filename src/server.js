@@ -3,7 +3,6 @@ const express = require("express")
 const path = require("path")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser");
-const databaseMiddleware = require("./middlewares/dbMiddleware");
 const routes = require("./routes/routes");
 
 const PORT = process.env.PORT || 5656;
@@ -22,7 +21,7 @@ async function server(mode) {
             extended: true
         }))
         app.use(cookieParser())
-        app.use(databaseMiddleware)
+
 
         if(mode == "DEV"){
             app.use(morgan("dev"))
