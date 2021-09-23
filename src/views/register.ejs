@@ -3,6 +3,7 @@
 
 <head>
     <%- include('parts/head') %> 
+    <% var error %> 
 
     <title>Olx Ro'yxatdan o'tish</title>
 </head>
@@ -14,6 +15,9 @@
 
                 <form id="registerForm" method="POST" action="/users/register">
                     <h2>Ro'yxatdan o'tish</h2>
+                    <% if(error) { %>
+                        <div class="alert alert-danger"><%= error %> </div>
+                    <% } %>  
                     <div>
                         <label for="">Ism</label>
                         <input type="text" name="name" required>

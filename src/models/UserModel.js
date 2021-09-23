@@ -16,7 +16,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         min: [3, "Parol uzunligi minimum 6 ta belgi bo'lishi lozim"],
-        required: true
+        required: true,
+    },
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false,
     }
 })
 
