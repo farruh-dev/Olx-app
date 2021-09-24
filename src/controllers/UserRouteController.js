@@ -1,6 +1,8 @@
+const { isValidObjectId } = require("mongoose")
 const users = require("../models/UserModel")
 const { createCrypt } = require("../modules/bcrypt")
 const mail = require("../modules/email")
+const { createToken } = require("../modules/jwt")
 const { SignUpValidation } = require("../modules/validations")
 
 module.exports = class UserRouteController {
@@ -39,6 +41,8 @@ module.exports = class UserRouteController {
 
             if(!id) throw new Error("Verifikatsiyada xatolik yuz berdi")
 
+            if(!isValidObjectId(id)) throw new Error("Verifikatsiyada xatolik yuz berdi")
+
             const user = await users.findOne(
                 {
                     _id: id
@@ -55,6 +59,8 @@ module.exports = class UserRouteController {
                     isVerified: true,
                 }
             )
+
+            res.cookie("token", await createToken({id: user.id})).redirect('/')
 
         } catch (error) {
             res.render("login", {

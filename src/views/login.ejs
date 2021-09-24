@@ -3,6 +3,7 @@
 
 <head>
     <%- include('parts/head') %> 
+    <% var error %> 
 
     <title>Olx Kirish</title>
 </head>
@@ -13,6 +14,9 @@
             <div class="formWrapper">
                 <form id="loginForm">
                     <h2>Kirish</h2>
+                    <% if(error) { %>
+                        <div class="alert alert-danger"><%= error %> </div>
+                    <% } %> 
                     <div>
                         <label for="">E-mail</label>
                         <input type="email" name="email" required>
