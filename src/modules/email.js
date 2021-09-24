@@ -3,17 +3,16 @@ const nodemailer = require('nodemailer');
 async function mail(to, subject, mail_body, mail_html) {
     try {
         const transport = await nodemailer.createTransport({
-            host: "smtp.yandex.ru",
+            host: "smtp.mail.ru",
             port: 465,
-            secure: true,
             auth: {
-                user: "olx-testtest@yandex.com",
-                pass: "p@ssword1",
+                user: "olxgroup@mail.ru",
+                pass: "kndUynkV9HqCFTneEuJ5",
             }
         })
     
         return await transport.sendMail({
-            from: "'OLX group'  <olx-testtest@yandex.com>",
+            from: "'OLX group'  <olxgroup@mail.ru>",
             to,
             subject,
             text: mail_body,
