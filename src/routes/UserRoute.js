@@ -5,7 +5,7 @@ const router = require("express").Router()
 router.get('/login', UserLoginGetController)
 router.get('/register', UserRegistrationGetController)
 router.post('/register', UserRegisterPostController)
-router.post('/verify/:id', UserVerifyGetController)
+router.get('/verify/:id', UserVerifyGetController)
 
 module.exports = {
     path: "/users",

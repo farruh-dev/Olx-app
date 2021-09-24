@@ -34,7 +34,33 @@ module.exports = class UserRouteController {
     }
 
     static async UserVerifyGetController(req, res){
-        res.render('login')
+        try {
+            const id = req.params.id
+
+            if(!id) throw new Error("Verifikatsiyada xatolik yuz berdi")
+
+            const user = await users.findOne(
+                {
+                    _id: id
+                }
+            );
+
+            if(!user) throw new Error("Verifikatsiya kaliti xato")
+
+            const x = await users.updateOne(
+                {
+                    _id: id
+                }, 
+                {
+                    isVerified: true,
+                }
+            )
+
+        } catch (error) {
+            res.render("login", {
+                error: error.message
+            })
+        }
     }
 
 }
