@@ -3,7 +3,7 @@ const users = require("../models/UserModel")
 const { createCrypt } = require("../modules/bcrypt")
 const mail = require("../modules/email")
 const { createToken } = require("../modules/jwt")
-const { SignUpValidation } = require("../modules/validations")
+const { SignUpValidation, LoginValidation } = require("../modules/validations")
 
 module.exports = class UserRouteController {
     static async UserRegistrationGetController(req, res){
@@ -34,7 +34,6 @@ module.exports = class UserRouteController {
             })
         }
     }
-
     static async UserVerifyGetController(req, res){
         try {
             const id = req.params.id
@@ -68,5 +67,9 @@ module.exports = class UserRouteController {
             })
         }
     }
+    static async UserLoginPostController(req, res) {
+        const {email, password} = LoginValidation(req.body)
+    }
+
 
 }

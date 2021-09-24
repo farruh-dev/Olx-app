@@ -4,7 +4,8 @@ const path = require("path")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser");
 const routes = require("./routes/routes");
-const mongo = require("./modules/mongoose")
+const mongo = require("./modules/mongoose");
+const AuthMiddleware = require("./middlewares/AuthMiddleware");
 
 const PORT = process.env.PORT || 5656;
 
@@ -22,6 +23,7 @@ async function server(mode) {
             extended: true
         }))
         app.use(cookieParser())
+        app.use(AuthMiddleware)
 
         await mongo()
 
