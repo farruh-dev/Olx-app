@@ -88,7 +88,6 @@ module.exports = class UserRouteController {
             res.cookie("token", await createToken({id: user._id})).redirect('/')
 
         } catch (error) {
-            console.log(error);
             res.render('login', {
                 error: error.message
             })
