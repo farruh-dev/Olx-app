@@ -5,19 +5,22 @@ const {
     UserVerifyGetController,
     UserLoginPostController,
     UserProfileGetController,
-    UserReVerifyPostController
+    UserReVerifyController,
+    UserReverifyGetController,
+    UserLogoutController
 } = require("../controllers/UserRouteController")
 
 const router = require("express").Router()
 
 router.get('/login', UserLoginGetController)
 router.get('/register', UserRegistrationGetController)
-router.get('/verify', UserVerifyGetController)
 router.get('/profile', UserProfileGetController)
+router.get('/reverify', UserReverifyGetController)
+router.get('/logout', UserLogoutController)
 router.post('/register', UserRegisterPostController)
 router.post('/login', UserLoginPostController)
+router.get('/reverify/:id', UserReVerifyController)
 router.get('/verify/:id', UserVerifyGetController)
-router.get('/reverify/:id', UserReVerifyPostController)
 
 module.exports = {
     path: "/users",

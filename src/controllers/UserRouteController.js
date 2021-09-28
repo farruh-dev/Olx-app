@@ -12,9 +12,7 @@ module.exports = class UserRouteController {
     static async UserLoginGetController(req, res){
         res.render('login')
     }
-    static async UserVerifyGetController(req, res){
-        res.render('verify')
-    }
+
     static async UserRegisterPostController(req, res){
         try {
             const {name, email, password} = await SignUpValidation(req.body)
@@ -64,7 +62,7 @@ module.exports = class UserRouteController {
                 }
             )
 
-            res.cookie("token", await createToken({id: user._id})).redirect('/')
+            res.cookie("token", await createToken({id: user._id})).redirect('/users/profile')
 
         } catch (error) {
             res.render("login", {
@@ -103,17 +101,37 @@ module.exports = class UserRouteController {
     }
 
 
-    static async UserReVerifyPostController(req, res){
+    static async UserReverifyGetController(req, res){
         const user = await users.findOne(
             {
                 _id: req.user.id
             }
         );
+        res.render('verify', {
+            message_start: `Hurmatli ${user.name}, sizning `,
+            email: user.email,
+            message_end: `pochtangizga emailni tasdiqlash uchun link jo'natildi.`,
+            button: true
+        })
+    }
 
-        console.log(user);
 
-        res.render('verify')
-        // await mail(req.user, "Iltimos emailingizni tasdiqlang", "Tasdiqlash uchun link:", `<a href="http://localhost:7889/users/verify/${user._id}">Tasdiqlash</a>`)
+    static async UserReVerifyController(req, res){
+        const user = await users.findOne(
+            {
+                _id: req.params.id
+            }
+        );
+
+        if(!user) throw new Error("Xatolik yuz berdi!")
+
+        await mail(user.email, "Iltimos emailingizni tasdiqlang", "Tasdiqlash uchun link:", `<a href="http://localhost:7889/users/verify/${user._id}">Tasdiqlash</a>`)
+
+        res.redirect('/users/reverify')
+    }
+
+    static async UserLogoutController(req, res) {
+        res.clearCookie("token").redirect('/')
     }
 
 

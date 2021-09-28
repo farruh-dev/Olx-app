@@ -1,3 +1,5 @@
+<% var user %> 
+
 <nav class="navbar">
     <div class="container-fluid">
         <div class="navLogoDiv">
@@ -14,15 +16,24 @@
 
         <div class="navLinksDiv">
             <ul class="navLinks">
-                <li class="navLinkItem">
-                    <a href="/" class="nav-link">Asosiy</a>
-                </li>
-                <li class="navLinkItem">
-                    <a href="/users/login" class="nav-link">Kirish</a>
-                </li>
-                <li class="navLinkItem">
-                    <a href="/users/register" class="nav-link">Ro'yxatdan o'tish</a>
-                </li>
+                <% if (user) { %>
+                    <li class="navLinkItem">
+                        <a href="/users/profile" class="nav-link"><%= user.name%></a>
+                    </li>
+                    <li class="navLinkItem">
+                        <a href="/users/profile" class="nav-link">E'lon berish</a>
+                    </li>
+                <% } else { %>
+                    <li class="navLinkItem">
+                        <a href="/" class="nav-link">Asosiy</a>
+                    </li>
+                    <li class="navLinkItem">
+                        <a href="/users/login" class="nav-link">Kirish</a>
+                    </li>
+                    <li class="navLinkItem">
+                        <a href="/users/register" class="nav-link">Ro'yxatdan o'tish</a>
+                    </li>
+                <% } %> 
             </ul>
         </div>
     </div>

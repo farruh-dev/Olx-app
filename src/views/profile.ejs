@@ -2,57 +2,52 @@
 <html lang="en">
 
 <head>
-    <%- include('parts/head') %> 
-    <% var error %> 
-    <% var user %> 
+    <%- include('parts/head') %>
+    <% var error %>
+    <% var user %>
 
     <title>Sizning Profil</title>
 </head>
 
 <body style=" overflow: hidden;">
-    <%- include('parts/nav') %> 
-    <section class="loginSection" >
+    <%- include('parts/nav') %>
+    <section class="loginSection">
         <div class="container-fluid" style="height: 100vh;">
             <div class="profileDivWrapper">
                 <h2>Profil</h2>
 
-                    <div class="userInfo">
-                        <span class="name"><%= user.name %> </span>
-                        <span class="email"><%= user.email %> </span>
-                        <% if (user.isVerified) {%>
-                            <span class="ver text-success">Email tasdiqlangan</span>
-                        <% } else { %>
-                            <span class="ver text-danger">Email tasdiqlamagan! <span class="verAlert">Iltimos, <btn data-id="<%= user._id%>" class="reverify" style="text-decoration: underline; cursor: pointer;">emailingizni tasdiqlang</btn></span></span>
-                            
-                        <% } %> 
-                    </div>
-                    
+                <div class="userInfo">
+                    <span class="name"><%= user.name %> </span>
+                    <span class="email"><%= user.email %> </span>
+                    <% if (user.isVerified) {%>
+                    <span class="ver text-success">Email tasdiqlangan</span>
+                    <% } else { %>
+                    <span class="ver text-danger">Email tasdiqlamagan!
+                         <span class="verAlert">Iltimos, 
+                             <a
+                                href="/users/reverify/<%=user._id%>"
+                                 class="reverify"
+                                style="text-decoration: underline; cursor: pointer;">emailingizni
+                                tasdiqlang
+                            </a>
+                        </span>
+                    </span>
 
-                    <div class="buttons">
-                        <a class="registerSubmit" type="button">Sozlamalar</a>
-                    </div>
+                    <% } %>
+                </div>
+
+
+                <div class="buttons">
+                    <a href="/users/logout" class=" mx-3 dangerBtn btnStyle">Akkauntdan chiqish</a>
+                    <a class=" mx-3 btnSolidStyle">Sozlamalar</a>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
         const reverify = document.querySelector('.reverify')
-        reverify.addEventListener('click', async (event) => {
-            
-            let response = await fetch("/users/reverify/" + event.target.dataset.id, {
-                method: "POST",
-                // headers: {
-                //     "Content-type": "application/json"
-                // },
-                // body: JSON.stringify(
-                //     {
-                //         id: event.target.dataset.id
-                //     }
-                // )
-            })
 
-            console.log(response);
-        })
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

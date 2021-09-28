@@ -28,6 +28,56 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.btnStyle {
+  padding: 10px 20px;
+  margin-top: 60px;
+  background-color: #cee5f7;
+  color: #414141;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btnStyle:hover {
+  background-color: #fff;
+}
+
+.btnSolidStyle {
+  padding: 10px 20px;
+  margin-top: 60px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btnSolidStyle:hover {
+  background-color: #fff;
+}
+
+.dangerBtn {
+  padding: 10px 20px;
+  margin-top: 60px;
+  background-color: #ffa7a7;
+  color: #353535;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.dangerBtn:hover {
+  background-color: #fd8080;
+  color: #fff;
+}
+
 .navbar {
   -webkit-box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.2);
@@ -747,36 +797,27 @@ body {
           align-items: center;
 }
 
-.profileDivWrapper .userInfo .name, .profileDivWrapper .userInfo .email, .profileDivWrapper .userInfo .ver {
+.profileDivWrapper .userInfo .name,
+.profileDivWrapper .userInfo .email,
+.profileDivWrapper .userInfo .ver {
   font-size: 1.5rem;
 }
 
 .profileDivWrapper .buttons {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.profileDivWrapper .buttons a {
-  width: 100%;
-  padding: 6px;
-  margin-top: 60px;
-  background-color: #D7E9F7;
-  border-radius: 5px;
-}
-
-.profileDivWrapper .buttons a:hover {
-  background-color: #cee5f7;
 }
 
 .registerSection {

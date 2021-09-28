@@ -6,6 +6,7 @@
     <% var message_start %> 
     <% var message_end %> 
     <% var email %> 
+    <% var button %> 
 
     <title>Olx Ro'yxatdan o'tish</title>
 </head>
@@ -13,11 +14,14 @@
 <body>
     <section class="registerSection">
         <div class="container-fluid">
-            <div class="formWrapper">
+            <div class="flex-column text-center formWrapper">
                 <div class="logoDiv">
                     <!-- <img class="logo" src="/img/OLX.svg" width="200px" height="200px" alt="" draggable="false"> -->
                     <span><%= message_start %> <a href="https://mail.google.com/"><%= email %></a> <%= message_end %></span>
                 </div>
+                <% if(button) { %>
+                    <a href="/users/profile" class="btnStyle">OK</a>
+                <% } %>  
             </div>
         </div>
     </section>

@@ -28,6 +28,52 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+.btnStyle {
+    padding: 10px 20px;
+    margin-top: 60px;
+    background-color: #cee5f7;
+    color: #414141;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #fff;
+    }
+}
+.btnSolidStyle {
+    padding: 10px 20px;
+    margin-top: 60px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #fff;
+
+    }
+}
+.dangerBtn {
+    padding: 10px 20px;
+    margin-top: 60px;
+    background-color: #ffa7a7;
+    color: #353535;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #fd8080;
+        color: #fff;
+    }
+}
+
 .navbar {
 
     box-shadow: 0 5px 20px -10px rgba($color: #000000, $alpha: 0.2);
@@ -616,28 +662,20 @@ body {
         flex-direction: column;
         align-items: center;
 
-        .name, .email, .ver{
+        .name,
+        .email,
+        .ver {
             font-size: 1.5rem;
         }
     }
 
     .buttons {
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
 
-        a {
-            width: 100%;
-            padding: 6px;
-            margin-top: 60px;
-            background-color: #D7E9F7;
-            border-radius: 5px;
-
-            &:hover {
-                background-color: #cee5f7;
-            }
-        }
     }
 }
 
