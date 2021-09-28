@@ -8,7 +8,9 @@ const { SignUpValidation, LoginValidation } = require("../modules/validations")
 
 module.exports = class UserRouteController {
     static async AdminPanelGetController(req, res){
-        res.render('admin_panel')
+        res.render('admin_panel', {
+            categoryList: await categories.find()
+        })
     }
     static async AdminAddCategoryPostController(req, res){
         const {name, icon} = req.body

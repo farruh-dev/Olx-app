@@ -30,15 +30,26 @@
             width: 100%;
         }
 
+        .categoriesList{
+            list-style: none;
+            padding: 15px;
+        }
+        .categoriesListItem{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 80px;
+        }
+
     </style>
 </head>
 
-<body style=" overflow: hidden;">
+<body>
     <%- include('parts/nav') %>
     <section class="loginSection">
-        <div class="container-fluid" style="height: 100vh;">
+        <div class="p-5 container">
             <div class="profileDivWrapper">
-                <h2>Admin</h2>
+                <h2>Kategoriya qo'shish</h2>
 
 
                     <form method="POST" action="/admin/add_category">
@@ -48,7 +59,7 @@
                             <input type="text" name="name">
                         </div>
                         <div class="inputWrapper">
-                            <label for=""><a href="https://fontawesome.com/">FontAwesome</a>dan icon</label>
+                            <label for=""><a href="https://fontawesome.com/" target="_blank">FontAwesome</a>dan icon</label>
                             <input type="text" name="icon" placeholder='&lt i class="fas example" &gt &lt/i&gt'>
                         </div>
 
@@ -56,12 +67,16 @@
 
                     </form>
 
-                    <ul class="categoriesList">
-                        <li class="categoriesListItem">
-                            <span class="categoryName"></span>
-                            <button>O'chirish</button>
-                        </li>
-                    </ul>
+                    <% if (categoryList) {%>
+                        <ul class="w-100 d-flex flex-column categoriesList">
+                            <% for (let category of categoryList) {%>
+                                <li class="categoriesListItem">
+                                    <span class="categoryName"><%= category.name %> </span>
+                                    <button class="m-0 dangerBtn">O'chirish</button>
+                                </li>
+                            <% } %> 
+                        </ul>
+                    <% } %> 
 
 
                 <div class="buttons">
