@@ -1,6 +1,6 @@
 const { isValidObjectId } = require("mongoose")
 const users = require("../models/UserModel")
-const { createCrypt } = require("../modules/bcrypt")
+const { createCrypt, compareCrypt } = require("../modules/bcrypt")
 const mail = require("../modules/email")
 const { createToken } = require("../modules/jwt")
 const { SignUpValidation, LoginValidation } = require("../modules/validations")
@@ -59,7 +59,7 @@ module.exports = class UserRouteController {
                 }
             )
 
-            res.cookie("token", await createToken({id: user.id})).redirect('/')
+            res.cookie("token", await createToken({id: user._id})).redirect('/')
 
         } catch (error) {
             res.render("login", {
@@ -68,7 +68,28 @@ module.exports = class UserRouteController {
         }
     }
     static async UserLoginPostController(req, res) {
-        const {email, password} = LoginValidation(req.body)
+        try {
+
+            const {email, password} = await LoginValidation(req.body)
+
+            const user = await users.findOne(
+                {
+                    email: email,
+                }
+            )
+
+            if(!user) throw new Error("Bunday foydalanuvschi mavjud emas!")
+
+            if(! await compareCrypt(password, user.password)) throw new Error("Parol xato terilgan!")
+
+            res.cookie("token", await createToken({id: user._id})).redirect('/')
+
+        } catch (error) {
+            console.log(error);
+            res.render('login', {
+                error: error.message
+            })
+        }
     }
 
 

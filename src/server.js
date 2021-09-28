@@ -24,7 +24,7 @@ async function server(mode) {
         }))
         app.use(cookieParser())
         app.use(AuthMiddleware)
-
+        
         await mongo()
 
         if(mode == "DEV"){

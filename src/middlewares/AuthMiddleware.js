@@ -10,6 +10,8 @@ async function AuthMiddleware(req, res, next) {
 
         const data = await verifyToken(req.cookies.token);
 
+        console.log(data);
+
         if(!data){
             next()
             return;
@@ -20,7 +22,9 @@ async function AuthMiddleware(req, res, next) {
                 _id: data.id
             }
         )
-        console.log(user);
+        
+        
+
         req.user = user;
 
         next()
