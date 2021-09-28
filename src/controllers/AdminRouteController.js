@@ -6,7 +6,7 @@ const mail = require("../modules/email")
 const { createToken } = require("../modules/jwt")
 const { SignUpValidation, LoginValidation } = require("../modules/validations")
 
-module.exports = class UserRouteController {
+module.exports = class AdminRouteController {
     static async AdminPanelGetController(req, res){
         res.render('admin_panel', {
             categoryList: await categories.find()

@@ -9,10 +9,11 @@
 
 <body>
     <%- include('parts/nav') %>
+    <% var categoryList %> 
 
     <section id="addNewSection">
         <div class="container">
-            <form id="addNewForm" action="/add_new" method="POST">
+            <form id="addNewForm" action="/add_new" method="POST" enctype="multipart/form-data">
                 <h2>Yangi e'lon qo'shish</h2>
                 <div class="inputField">
                     <label for="">Nomi</label>
@@ -31,6 +32,7 @@
                     <div class="selectField">
                         <label for="">Valyuta</label>
                         <select name="currensy" id="currensy" required>
+                             
                             <option value="dollar" selected>so'm</option>
                             <option value="sum">dollar</option>
                             <option value="euro">yevro</option>
@@ -40,7 +42,9 @@
                 <div class="selectField">
                     <label for="">Kategoriya</label>
                     <select name="category" id="category" required>
-                        <option value="category" selected>Kategoriya</option>
+                        <% for (let category of categoryList) {%>
+                            <option value="<%= category._id %> " selected><%= category.name %> </option>
+                        <% } %> 
                         
                     </select>
                 </div>
