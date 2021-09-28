@@ -12,6 +12,9 @@ module.exports = class UserRouteController {
     static async UserLoginGetController(req, res){
         res.render('login')
     }
+    static async UserVerifyGetController(req, res){
+        res.render('verify')
+    }
     static async UserRegisterPostController(req, res){
         try {
             const {name, email, password} = await SignUpValidation(req.body)
@@ -22,7 +25,9 @@ module.exports = class UserRouteController {
 
             if(user){
                 res.render('verify', {
-                    message: `Hurmatli ${user.name}, sizning ${user.email} pochtangizga emailni tasdiqlash uchun link jo'natildi. Davom etish uchun emailingizni tasdiqlang.`
+                    message_start: `Hurmatli ${user.name}, sizning `,
+                    email: user.email,
+                    message_end: `pochtangizga emailni tasdiqlash uchun link jo'natildi. Davom etish uchun emailingizni tasdiqlang.`
                 })
             }
             await mail(email, "Iltimos emailingizni tasdiqlang", "Tasdiqlash uchun link:", `<a href="http://localhost:7889/users/verify/${user._id}">Tasdiqlash</a>`)
@@ -91,6 +96,27 @@ module.exports = class UserRouteController {
             })
         }
     }
+    static async UserProfileGetController(req, res){
+        res.render('profile', {
+            user: req.user
+        })
+    }
+
+
+    static async UserReVerifyPostController(req, res){
+        const user = await users.findOne(
+            {
+                _id: req.user.id
+            }
+        );
+
+        console.log(user);
+
+        res.render('verify')
+        // await mail(req.user, "Iltimos emailingizni tasdiqlang", "Tasdiqlash uchun link:", `<a href="http://localhost:7889/users/verify/${user._id}">Tasdiqlash</a>`)
+    }
+
+
 
 
 }

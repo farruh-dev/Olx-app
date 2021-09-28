@@ -711,6 +711,74 @@ body {
           box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.3);
 }
 
+.profileDivWrapper {
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  width: 900px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 80px 70px;
+  position: relative;
+  -webkit-box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+}
+
+.profileDivWrapper .userInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileDivWrapper .userInfo .name, .profileDivWrapper .userInfo .email, .profileDivWrapper .userInfo .ver {
+  font-size: 1.5rem;
+}
+
+.profileDivWrapper .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profileDivWrapper .buttons a {
+  width: 100%;
+  padding: 6px;
+  margin-top: 60px;
+  background-color: #D7E9F7;
+  border-radius: 5px;
+}
+
+.profileDivWrapper .buttons a:hover {
+  background-color: #cee5f7;
+}
+
 .registerSection {
   font-family: 'Raleway', sans-serif;
   background-color: #84B2EE;

@@ -584,11 +584,58 @@ body {
                     transition: 0.4s all;
 
                     &:hover {
-                        
+
                         background-color: #84B2EE;
                         box-shadow: 0 5px 20px -3px rgba($color: #000000, $alpha: 0.3);
                     }
                 }
+            }
+        }
+    }
+}
+
+// Profile
+
+.profileDivWrapper {
+    background-color: rgba($color: #fff, $alpha: 0.4);
+    backdrop-filter: blur(5px);
+    width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 70px;
+
+    position: relative;
+
+    box-shadow: 0 30px 70px -20px rgba($color: #000000, $alpha: 0.4);
+    border-radius: 7px;
+
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .name, .email, .ver{
+            font-size: 1.5rem;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            width: 100%;
+            padding: 6px;
+            margin-top: 60px;
+            background-color: #D7E9F7;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: #cee5f7;
             }
         }
     }

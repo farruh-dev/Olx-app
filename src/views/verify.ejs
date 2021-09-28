@@ -3,7 +3,9 @@
 
 <head>
     <%- include('parts/head') %> 
-    <% var message %> 
+    <% var message_start %> 
+    <% var message_end %> 
+    <% var email %> 
 
     <title>Olx Ro'yxatdan o'tish</title>
 </head>
@@ -14,7 +16,7 @@
             <div class="formWrapper">
                 <div class="logoDiv">
                     <!-- <img class="logo" src="/img/OLX.svg" width="200px" height="200px" alt="" draggable="false"> -->
-                    <span><%= message%></span>
+                    <span><%= message_start %> <a href="https://mail.google.com/"><%= email %></a> <%= message_end %></span>
                 </div>
             </div>
         </div>
