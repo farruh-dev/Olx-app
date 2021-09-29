@@ -3,7 +3,7 @@
 
 <head>
     <%- include('parts/head') %>
-    <link rel="stylesheet" href="/libraries/dropzone/dropzone.css">
+    <script defer="" data-domain="dropzone.dev" src="https://plausible.io/js/plausible.js"></script>
 
     <title>Olx Yangi e'lon</title>
 </head>
@@ -54,8 +54,8 @@
                     </select>
                 </div>
                 <div class="inputField">
-                    <label for="">Rasm</label>
-                    <input class="dropzone" id="my-dropzone" type="file" accept="image/png, image/jpg, image/jpeg"
+                    <label for="">Rasm(lar)</label>
+                    <input class="dropzone" id="my-dropzone" type="file" multiple accept="image/png, image/jpg, image/jpeg"
                         name="photos">
                     <input value="placeholder.png" type="hidden" accept="image/png, image/jpg, image/jpeg"
                         name="photo_placeholder">
@@ -91,25 +91,10 @@
 
     <script src="/libraries/cleavejs/cleave.js"></script>
     <script src="/libraries/cleavejs/cleave-phone.uz.js"></script>
-    <script src="/libraries/dropzone/dropzone.js"></script>
-
 
     <script>
         const likeButton = document.querySelectorAll('.likeButton')
         const phone = document.getElementById("phone");
-
-        Dropzone.options.myDropzone = {
-            paramName: "photos", // The name that will be used to transfer the file
-            maxFilesize: 2, // MB
-            accept: function (file, done) {
-                if (file.name == "justinbieber.jpg") {
-                    done("Naha, you don't.");
-                } else {
-                    done();
-                }
-            }
-
-        };
 
         const cleave = new Cleave(phone, {
             phone: true,
