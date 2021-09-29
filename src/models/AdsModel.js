@@ -13,10 +13,6 @@ const adsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    category: {
-        type: String,
-        required: true,
-    },
     phone: {
         type: String,
         required: true,
@@ -39,11 +35,17 @@ const adsSchema = new mongoose.Schema({
 
     category_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Categories"
+        ref: "Category"
     },
-    owner: {
+    
+    owner_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Users"
+    },
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
     },
 })
 

@@ -47,8 +47,9 @@
                 <div class="selectField">
                     <label for="">Kategoriya</label>
                     <select name="category" id="category" required>
+
                         <% for (let category of categoryList) {%>
-                        <option value="<%= category._id %> " selected><%= category.name %> </option>
+                        <option value="<%= category._id %>"><%= category.name %> </option>
                         <% } %>
 
                     </select>
@@ -57,7 +58,7 @@
                     <label for="">Rasm(lar)</label>
                     <input class="dropzone" id="my-dropzone" type="file" multiple accept="image/png, image/jpg, image/jpeg"
                         name="photos">
-                    <input type="hidden" value="placeholder.png" name="placeholder">
+                    <!-- <input type="hidden" value="placeholder.png" name="placeholder"> -->
                 </div>
                 <div class="inputField">
                     <label for="">Telefon raqam</label>

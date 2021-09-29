@@ -62,7 +62,6 @@ module.exports = class Validations {
 				.required()
 				.error(new Error("Kategoriyada xato bor.")),
 			photos: Joi.string(),
-			placeholder: Joi.string(),
 			phone: Joi.string()
 				.required()
 				.error(new Error("Raqam o'zbekistonni emas"))
