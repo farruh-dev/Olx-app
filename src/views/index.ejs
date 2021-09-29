@@ -4,6 +4,7 @@
 <head>
     <%- include('parts/head') %>
     <% var categoryList %>
+    <% var adsList %>
 
     <title>Olx</title>
 </head>
@@ -17,17 +18,17 @@
                 <ul class="categoriesList">
                     <% if (categoryList) { %>
 
-                        <% for (let category of categoryList) {%>
-                            <li class="categoryListItem">
-                                <a href="/category/<%= category._id %>">
-                                    <!-- <img class="categoryImage" src="" alt="category"> -->
-                                    <%- category.icon %> 
-                                    <span class="categoryName"><%= category.name %> </span>
-                                </a>
-                            </li>
-                        <% } %> 
-                    
-                    <% } else { %> 
+                    <% for (let category of categoryList) {%>
+                    <li class="categoryListItem">
+                        <a href="/category/<%= category._id %>">
+                            <!-- <img class="categoryImage" src="" alt="category"> -->
+                            <%- category.icon %>
+                            <span class="categoryName"><%= category.name %> </span>
+                        </a>
+                    </li>
+                    <% } %>
+
+                    <% } else { %>
 
 
                     <li class="categoryListItem">
@@ -121,7 +122,7 @@
                             <span class="categoryName">Qayta aloqa</span>
                         </a>
                     </li> -->
-                    <% } %> 
+                    <% } %>
                 </ul>
 
             </div>
@@ -132,55 +133,30 @@
         <div class="container">
             <h2 class="productsSectionHeading">PREMIUM E`LONLAR</h2>
             <div class="productsList">
-                <div class="productItem">
-                    <div class="productImgDiv">
-                        <a href="">
-                            <img src="https://picsum.photos/400/200" class="productImg"></img>
-                        </a>
-                    </div>
-                    <div class="productInfo">
-                        <div class="productNameDiv">
-                            <a href="">
-                                <span class="productName">Audi avto</span>
-                                <div class="productNameUnderline"></div>
-                            </a>
-                        </div>
-                        <div class="locationAndTime">
-                            <span class="productLocation">Tashkent</span>
-                            <span class="productLocation">2021-09-19</span>
-                            <span class="productLocation">21:00</span>
-                        </div>
-                        <div class="productPriceDiv">
-                            <span class="productPrice">200 000 000 so'm</span>
-                        </div>
-                        <div class="likeButtonDiv">
-                            <button class="likeButton">
-                                <i class="like far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
+                <% for (let ad of adsList) {%>
                 <div class="productItem">
                     <div class="productImgDiv">
-                        <a href="">
-                            <img src="https://picsum.photos/400/200" class="productImg"></img>
+                        <a href="/ads/<%= ad.slug %> ">
+                            <img src="/uploads/<%= ad.photos[0] %> " class="productImg"></img>
                         </a>
                     </div>
                     <div class="productInfo">
                         <div class="productNameDiv">
-                            <a href="">
-                                <span class="productName">Audi avto</span>
+                            <a href="/ads/<%= ad.slug %> ">
+                                <span class="productName"><%= ad.title %> </span>
                                 <div class="productNameUnderline"></div>
                             </a>
                         </div>
                         <div class="locationAndTime">
-                            <span class="productLocation">Tashkent</span>
-                            <span class="productLocation">2021-09-19</span>
-                            <span class="productLocation">21:00</span>
+                            <span class="productLocation"><%= ad.location %> </span>
+                            <div class="d-block">
+                                <span class="productLocation"><%= ad.addedDate %> </span>
+                                <span class="productLocation"><%= ad.addedTime %> </span>
+                            </div>
                         </div>
                         <div class="productPriceDiv">
-                            <span class="productPrice">200 000 000 so'm</span>
+                            <span class="productPrice"><%= ad.price %> <%= ad.currensy %> </span>
                         </div>
                         <div class="likeButtonDiv">
                             <button class="likeButton">
@@ -189,35 +165,8 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
 
-                <div class="productItem">
-                    <div class="productImgDiv">
-                        <a href="">
-                            <img src="https://picsum.photos/400/200" class="productImg"></img>
-                        </a>
-                    </div>
-                    <div class="productInfo">
-                        <div class="productNameDiv">
-                            <a href="">
-                                <span class="productName">Audi avto</span>
-                                <div class="productNameUnderline"></div>
-                            </a>
-                        </div>
-                        <div class="locationAndTime">
-                            <span class="productLocation">Tashkent</span>
-                            <span class="productLocation">2021-09-19</span>
-                            <span class="productLocation">21:00</span>
-                        </div>
-                        <div class="productPriceDiv">
-                            <span class="productPrice">200 000 000 so'm</span>
-                        </div>
-                        <div class="likeButtonDiv">
-                            <button class="likeButton">
-                                <i class="like far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

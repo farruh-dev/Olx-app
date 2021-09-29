@@ -8,9 +8,7 @@ const {
     AddAdsValidation
 } = require("../modules/validations")
 const path = require("path")
-const {
-    ADDRGETNETWORKPARAMS
-} = require("dns")
+
 const ads = require("../models/AdsModel")
 const { default: slugify } = require("slugify")
 
@@ -32,7 +30,6 @@ module.exports = class AdsRouteController {
                 price,
                 description,
                 category,
-                placeholder,
                 phone
             } = await AddAdsValidation(req.body)
 
@@ -54,7 +51,14 @@ module.exports = class AdsRouteController {
                 }
 
                 console.log(photos);
+            }else{
+                photos.push('placeholder.png')
             }
+
+            const date = new Date()
+
+            const addedDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
+            const addedTime = `${date.getHours()}:${date.getMinutes()}`
 
             const slug = slugify(title, {lower: true, strict: true, trim: true, replacement: "_"}) + Date.now()
 
@@ -65,11 +69,12 @@ module.exports = class AdsRouteController {
                 price,
                 description,
                 photos,
-                placeholder,
                 phone,
                 category_id: mongoose.Types.ObjectId(String(category)),
                 owner_id: req.user._id,
-                slug
+                slug,
+                addedDate,
+                addedTime
             })
 
             console.log(x);

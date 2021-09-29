@@ -3,6 +3,7 @@
 
 <head>
     <%- include('parts/head') %> 
+    <% var adsOne %> 
 
     <title>Olx Btafsil</title>
 </head>
@@ -13,20 +14,20 @@
     <section class="moreSection">
         <div class="container">
             <div class="moreImageDiv">
-                <img src="../public/img/store-4156934.svg" alt="" class="moreImage">
+                <img src="/uploads/<%= adsOne.photos[0] %> " alt="" class="moreImage">
             </div>
             <div class="productInfo">
                 <div class="productNameDiv">
-                        <span class="productName">Audi avto</span>
+                        <span class="productName"><%= adsOne.title %> </span>
                         <div class="productNameUnderline"></div>
                 </div>
                 <div class="locationAndTime">
-                    <span class="productLocation">Tashkent</span>
-                    <span class="productLocation">2021-09-19</span>
-                    <span class="productLocation">21:00</span>
+                    <span class="productLocation"><%= adsOne.location %></span>
+                    <span class="productLocation"><%= adsOne.addedDate %></span>
+                    <span class="productLocation"><%= adsOne.addedTime %></span>
                 </div>
                 <div class="productPriceDiv">
-                    <span class="productPrice">200 000 000 so'm</span>
+                    <span class="productPrice"><%= adsOne.price %> <%= adsOne.currensy %></span>
                 </div>
                 <div class="likeButtonDiv">
                     <button class="likeButton">
@@ -36,7 +37,7 @@
 
                 <div class="descriptionDiv">
                     <p class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolor, ratione sit eius deleniti quas veritatis eligendi dolorem hic atque adipisci numquam eos. Illum quae illo commodi quo id dicta nesciunt. Libero veniam dicta voluptas reprehenderit? Corrupti corporis illo cupiditate consectetur suscipit amet debitis ratione saepe. Explicabo, molestias? Neque, suscipit!
+                        <%= adsOne.description %>
                     </p>
                 </div>
             </div>

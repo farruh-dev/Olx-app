@@ -26,12 +26,16 @@ const adsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    addedDate: {
+        type: String,
+        required: true,
+    },
+    addedTime: {
+        type: String,
+        required: true,
+    },
 
     photos: [String],
-    placeholder: {
-        type: String,
-        default: "placeholder.png"
-    },
 
     category_id: {
         type: mongoose.Schema.Types.ObjectId,
