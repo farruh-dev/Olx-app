@@ -42,6 +42,7 @@ body {
         background-color: #fff;
     }
 }
+
 .btnSolidStyle {
     padding: 10px 20px;
     margin-top: 60px;
@@ -58,6 +59,7 @@ body {
 
     }
 }
+
 .dangerBtn {
     padding: 10px 20px;
     margin-top: 60px;
@@ -451,6 +453,9 @@ body {
                 word-break: break-word;
                 position: relative;
 
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
 
                 .productName {
                     font-weight: 600;
@@ -473,22 +478,38 @@ body {
                     width: 100%;
                     background-color: #454545;
                 }
+
+                .addedAt{
+                    padding-bottom: 15px;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .categoryName {
+                .productCategory {
+                    font-size: 1.2rem;
+                    color: #454545;
+                }
             }
 
             .productPriceDiv {
                 .productPrice {
                     font-weight: 700;
                     color: #454545;
-                    font-size: 1.2rem;
+                    font-size: 1.6rem;
                     word-break: break-word;
 
                 }
             }
 
+            .descriptionDiv{
+                margin-top: 30px;
+            }
+
             .likeButtonDiv {
                 position: absolute;
-                bottom: 0;
-                right: 1%;
+                top: 0;
+                right: 0;
 
                 .likeButton {
                     background-color: transparent;

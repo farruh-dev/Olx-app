@@ -39,7 +39,7 @@ const adsSchema = new mongoose.Schema({
 
     category_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Category"
+        ref: "Categories"
     },
     
     owner_id: {

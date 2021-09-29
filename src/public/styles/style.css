@@ -544,6 +544,15 @@ body {
 .moreSection .container .productInfo .productNameDiv {
   word-break: break-word;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .moreSection .container .productInfo .productNameDiv .productName {
@@ -568,17 +577,31 @@ body {
   background-color: #454545;
 }
 
+.moreSection .container .productInfo .productNameDiv .addedAt {
+  padding-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.moreSection .container .productInfo .categoryName .productCategory {
+  font-size: 1.2rem;
+  color: #454545;
+}
+
 .moreSection .container .productInfo .productPriceDiv .productPrice {
   font-weight: 700;
   color: #454545;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   word-break: break-word;
+}
+
+.moreSection .container .productInfo .descriptionDiv {
+  margin-top: 30px;
 }
 
 .moreSection .container .productInfo .likeButtonDiv {
   position: absolute;
-  bottom: 0;
-  right: 1%;
+  top: 0;
+  right: 0;
 }
 
 .moreSection .container .productInfo .likeButtonDiv .likeButton {

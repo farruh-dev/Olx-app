@@ -97,7 +97,9 @@ module.exports = class AdsRouteController {
             {
                 slug: req.params.slug
             }
-        )
+        ).populate("owner_id").populate("category_id")
+
+        console.log(adsOne);
 
         res.render('more', {
             user: req.user,
