@@ -32,6 +32,10 @@ const adsSchema = new mongoose.Schema({
     },
 
     photos: [String],
+    placeholder: {
+        type: String,
+        default: "placeholder.png"
+    },
 
     category_id: {
         type: mongoose.Schema.Types.ObjectId,
