@@ -3,7 +3,9 @@
 
 <head>
     <%- include('parts/head') %>
+    <% var category %>
     <% var categoryList %>
+    <% var category_adst %>
 
     <title>Olx</title>
 </head>
@@ -18,13 +20,14 @@
                     <% if (categoryList) { %>
 
                         <% for (let category of categoryList) {%>
-                            <li class="categoryListItem">
+                            <li class="categoryListItem" data-id="<%= category._id %>">
                                 <a href="/category/<%= category._id %>">
                                     <!-- <img class="categoryImage" src="" alt="category"> -->
                                     <%- category.icon %> 
                                     <span class="categoryName"><%= category.name %> </span>
                                 </a>
                             </li>
+
                         <% } %> 
                     
                     <% } else { %> 
@@ -130,37 +133,41 @@
 
     <section id="productsSection">
         <div class="container">
+            <h2 class="productsSectionHeading"><%= category.name %> </h2>
             <h2 class="productsSectionHeading">PREMIUM E`LONLAR</h2>
             <div class="productsList">
-                
-                <div class="productItem">
-                    <div class="productImgDiv">
-                        <a href="">
-                            <img src="https://picsum.photos/400/200" class="productImg"></img>
-                        </a>
-                    </div>
-                    <div class="productInfo">
-                        <div class="productNameDiv">
-                            <a href="">
-                                <span class="productName">Audi avto</span>
-                                <div class="productNameUnderline"></div>
+                <% for (let ad of category_ads) {%> 
+                    <div class="productItem">
+                        <div class="productImgDiv">
+                            <a href="/ads/<%= ad.slug %> ">
+                                <img src="/uploads/<%= ad.photos[0] %> " class="productImg"></img>
                             </a>
                         </div>
-                        <div class="locationAndTime">
-                            <span class="productLocation">Tashkent</span>
-                            <span class="productLocation">2021-09-19</span>
-                            <span class="productLocation">21:00</span>
-                        </div>
-                        <div class="productPriceDiv">
-                            <span class="productPrice">200 000 000 so'm</span>
-                        </div>
-                        <div class="likeButtonDiv">
-                            <button class="likeButton">
-                                <i class="like far fa-heart"></i>
-                            </button>
+                        <div class="productInfo">
+                            <div class="productNameDiv">
+                                <a href="/ads/<%= ad.slug %> ">
+                                    <span class="productName"><%= ad.title %> </span>
+                                    <div class="productNameUnderline"></div>
+                                </a>
+                            </div>
+                            <div class="locationAndTime">
+                                <span class="productLocation"><%= ad.location %> </span>
+                                <div class="d-block">
+                                    <span class="productLocation"><%= ad.addedDate %> </span>
+                                    <span class="productLocation"><%= ad.addedTime %> </span>
+                                </div>
+                            </div>
+                            <div class="productPriceDiv">
+                                <span class="productPrice"><%= ad.price %> <%= ad.currensy %> </span>
+                            </div>
+                            <div class="likeButtonDiv">
+                                <button class="likeButton">
+                                    <i class="like far fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% } %> 
 
             </div>
         </div>
@@ -174,9 +181,23 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
 
-
     <script>
         const likeButton = document.querySelectorAll('.likeButton')
+        const categoryListItems = document.querySelectorAll('.categoryListItem')
+
+        const category_id = window.location.pathname.split('/')[2]
+
+        let arr = []
+
+        // ackground-color: #fff;
+        //             box-shadow: 0 15px 30px -10px rgba($color: #000000, $alpha: 0.1);
+
+        for(let e of categoryListItems){
+            if(category_id.trim() == e.dataset.id.trim()){
+                e.classList.add('activeCategory')
+            }
+        }
+
 
         likeButton.forEach(btn => {
             btn.addEventListener('click', event => {
@@ -193,6 +214,8 @@
                 }
             })
         })
+
+        
     </script>
 
 </body>
