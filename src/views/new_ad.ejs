@@ -2,22 +2,27 @@
 <html lang="en">
 
 <head>
-    <%- include('parts/head') %> 
+    <%- include('parts/head') %>
+    <link rel="stylesheet" href="">
 
     <title>Olx Yangi e'lon</title>
 </head>
 
 <body>
     <%- include('parts/nav') %>
-    <% var categoryList %> 
+    <% var categoryList %>
+    <% var error %>
 
     <section id="addNewSection">
         <div class="container">
-            <form id="addNewForm" action="/add_new" method="POST" enctype="multipart/form-data">
+            <form id="addNewForm" action="/ads/add_ad" method="POST" enctype="multipart/form-data">
                 <h2>Yangi e'lon qo'shish</h2>
+                <% if (error) {%>
+                <div class="alert alert-danger w-100"><%= error %> </div>
+                <% } %>
                 <div class="inputField">
                     <label for="">Nomi</label>
-                    <input type="text" class="newAdNameInput" name="name" required>
+                    <input type="text" class="newAdNameInput" name="title" required>
                 </div>
 
                 <div class="inputField">
@@ -32,7 +37,7 @@
                     <div class="selectField">
                         <label for="">Valyuta</label>
                         <select name="currensy" id="currensy" required>
-                             
+
                             <option value="dollar" selected>so'm</option>
                             <option value="sum">dollar</option>
                             <option value="euro">yevro</option>
@@ -43,17 +48,23 @@
                     <label for="">Kategoriya</label>
                     <select name="category" id="category" required>
                         <% for (let category of categoryList) {%>
-                            <option value="<%= category._id %> " selected><%= category.name %> </option>
-                        <% } %> 
-                        
+                        <option value="<%= category._id %> " selected><%= category.name %> </option>
+                        <% } %>
+
                     </select>
                 </div>
                 <div class="inputField">
                     <label for="">Rasm</label>
-                    <input type="file" accept="image/png, image/jpg, image/jpeg" name="photo">
-                    <input value="placeholder.png" type="hidden" accept="image/png, image/jpg, image/jpeg" name="photo-placeholder">
+                    <input class="dropzone" id="my-dropzone" type="file" accept="image/png, image/jpg, image/jpeg"
+                        name="photos">
+                    <input value="placeholder.png" type="hidden" accept="image/png, image/jpg, image/jpeg"
+                        name="photo_placeholder">
                 </div>
-                
+                <div class="inputField">
+                    <label for="">Telefon raqam</label>
+                    <input style="font-family: sans-serif;" id="phone" type="tel" name="phone" placeholder="+998">
+                </div>
+
 
                 <div class="textareaField">
                     <label for="">Ma'lumot</label>
@@ -71,16 +82,39 @@
 
 
 
-    <%- include('parts/footer') %> 
+    <%- include('parts/footer') %>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
 
+    <script src="/js/cleavejs/cleave.js"></script>
+    <script src="/js/cleavejs/cleave-phone.uz.js"></script>
+    <script src="/js/dropzone/dropzone.js"></script>
+
 
     <script>
         const likeButton = document.querySelectorAll('.likeButton')
+        const phone = document.getElementById("phone");
+
+        Dropzone.options.myDropzone = {
+            paramName: "photos", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            accept: function (file, done) {
+                if (file.name == "justinbieber.jpg") {
+                    done("Naha, you don't.");
+                } else {
+                    done();
+                }
+            }
+
+        };
+
+        const cleave = new Cleave(phone, {
+            phone: true,
+            phoneRegionCode: "UZ"
+        })
 
         likeButton.forEach(btn => {
             btn.addEventListener('click', event => {

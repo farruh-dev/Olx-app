@@ -43,6 +43,12 @@ module.exports = class Validations {
 				.max(128)
 				.trim()
 				.error(new Error("Sarlavhada xato bor.")),
+			location: Joi.string()
+				.required()
+				.error(new Error("Manzilda xato bor.")),
+			currensy: Joi.string()
+				.required()
+				.error(new Error("Valyutada xato bor.")),
 			price: Joi.number()
 				.min(0)
 				.required()
@@ -59,7 +65,6 @@ module.exports = class Validations {
 			phone: Joi.string()
 				.required()
 				.error(new Error("Raqam o'zbekistonni emas"))
-				.pattern(/^998(9[012345789]|6[125679]|7[01234569])[0-9]{7}$/),
 		}).validateAsync(data);
 	}
 };
