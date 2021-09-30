@@ -5,53 +5,21 @@
     <%- include('parts/head') %>
     <% var error %>
     <% var user %>
-    <% var user_ads %>
+    <% var results %>
+    <% var key %>
 
-    <title>Profil</title>
+    <title><%=  %> </title>
 </head>
 
 <body>
     <%- include('parts/nav') %>
-    <section class="loginSection">
-        <div class="container-fluid">
-            <div class="profileDivWrapper">
-                <h2>Profil</h2>
-
-                <div class="userInfo">
-                    <span class="name"><%= user.name %> </span>
-                    <span class="email"><%= user.email %> </span>
-                    <% if (user.isVerified) {%>
-                    <span class="ver text-success">Email tasdiqlangan</span>
-                    <% } else { %>
-                    <span class="ver text-danger">Email tasdiqlamagan!
-                         <span class="verAlert">Iltimos, 
-                             <a
-                                href="/users/reverify/<%=user._id%>"
-                                 class="reverify"
-                                style="text-decoration: underline; cursor: pointer;">emailingizni
-                                tasdiqlang
-                            </a>
-                        </span>
-                    </span>
-
-                    <% } %>
-                </div>
-
-
-                <div class="buttons">
-                    <a href="/users/logout" class=" mx-3 dangerBtn btnStyle">Akkauntdan chiqish</a>
-                    <a class=" mx-3 btnSolidStyle">Sozlamalar</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="productsSection">
         <div class="container">
-            <h2 class="productsSectionHeading">Mening e'lonlarim </h2>
+            <h2 class="productsSectionHeading"><%= key %> bo'yicha qidiruv natijalari </h2>
             <div class="productsList">
 
-                <% for (let ad of user_ads) {%>
+                <% for (let ad of results) {%>
                 <div class="productItem">
                     <div class="productImgDiv">
                         <a href="/ads/<%= ad.slug %> ">

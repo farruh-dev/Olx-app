@@ -106,4 +106,26 @@ module.exports = class AdsRouteController {
             adsOne
         })
     }
+
+    static async AdsSearchGetController(req, res){
+        res.render('search_result', {
+            results,
+            key: req.params.key,
+        })
+    }
+
+    static async AdsSearchPostController(req, res) {
+
+        const results = await ads.find(
+            {title: { $regex: '.*' + req.params.key + '.*' } }
+        )
+
+        console.log(results);
+
+        res.render('search_result', {
+            user: req.user,
+            results,
+            key: req.params.key,
+        })
+    }
 }
