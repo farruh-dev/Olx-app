@@ -46,7 +46,7 @@
                     <span class="ownerName">Egasi: <%= adsOne.owner_id.name %></span>
                 </div>
                 <div class="connectionDiv">
-                    <span class="ownerChatLink">Xabar yozish: <a href=""><%= adsOne.owner_id.name %></a></span>
+                    <span class="ownerChatLink">Xabar yozish: <a href="/users/profile/<%= adsOne.owner_id._id %> "><%= adsOne.owner_id.name %></a></span>
                     <span class="ownerPhone">Tel: <a href="tel:<%= adsOne.phone %> "><%= adsOne.phone %></a></span>
                 </div>
                 
@@ -68,25 +68,7 @@
     </script>
 
 
-    <script>
-        const likeButton = document.querySelectorAll('.likeButton')
-
-        likeButton.forEach(btn => {
-            btn.addEventListener('click', event => {
-                let liekIcon = event.target.children[0]
-                console.log(liekIcon);
-            if (liekIcon.classList.contains('far')) {
-                liekIcon.classList.remove('far')
-                liekIcon.classList.add('fas')
-
-
-            } else {
-                liekIcon.classList.remove('fas')
-                liekIcon.classList.add('far')
-            }
-        })
-        })
-    </script>
+    <script src="/js/like.js"></script>
 
 </body>
 

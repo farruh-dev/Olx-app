@@ -5,7 +5,6 @@
     <%- include('parts/head') %>
     <% var error %>
     <% var user %>
-    <% var another_user %>
     <% var user_ads %>
 
     <title>Sizning Profil</title>
@@ -13,7 +12,7 @@
 
 <body>
     <%- include('parts/nav') %>
-    <!-- <section class="loginSection">
+    <section class="loginSection">
         <div class="container-fluid">
             <div class="profileDivWrapper">
                 <h2>Profil</h2>
@@ -45,11 +44,11 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <section id="productsSection">
         <div class="container">
-            <h2 class="productsSectionHeading"><%= another_user.name %>ning e'lonlari </h2>
+            <h2 class="productsSectionHeading">Mening e'lonlarim </h2>
             <div class="productsList">
 
                 <% for (let ad of user_ads) {%>
